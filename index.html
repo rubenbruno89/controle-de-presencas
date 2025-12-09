@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Controle de Presenças</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <script type="importmap">
+  {
+    "imports": {
+      "jspdf": "https://esm.sh/jspdf@2.5.1"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div class="app">
+
+    <header class="top-bar">
+      <div class="top-actions">
+        <button id="btn-generate-pdf" class="btn primary">Gerar PDF</button>
+        <button id="btn-clear-all" class="btn ghost">Limpar Tudo</button>
+      </div>
+      <div class="totals">
+        <div class="total-item">
+          <span class="label">Presentes</span>
+          <span id="total-presentes" class="value">0</span>
+        </div>
+        <div class="total-item">
+          <span class="label">Ausentes</span>
+          <span id="total-ausentes" class="value">0</span>
+        </div>
+        <div class="total-item">
+          <span class="label">Total</span>
+          <span id="total-geral" class="value">0</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="card add-room">
+        <form id="room-form" autocomplete="off">
+          <input type="hidden" id="edit-id" />
+          <div class="field-row">
+            <label class="field">
+              <span>Sala / Laboratório</span>
+              <input id="input-sala" type="text" placeholder="Ex: Lab 1" required />
+            </label>
+            <label class="field narrow">
+              <span>Presentes</span>
+              <input id="input-presentes" type="number" min="0" inputmode="numeric" required />
+            </label>
+            <label class="field narrow">
+              <span>Ausentes</span>
+              <input id="input-ausentes" type="number" min="0" inputmode="numeric" required />
+            </label>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn primary" id="btn-submit">Adicionar</button>
+            <button type="button" class="btn ghost" id="btn-cancel-edit" hidden>Cancelar</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card rooms">
+        <div class="rooms-header">
+          <span>Sala</span>
+          <span>Presentes</span>
+          <span>Ausentes</span>
+          <span>Total</span>
+          <span>Ações</span>
+        </div>
+        <div id="rooms-list" class="rooms-list">
+          <!-- Linhas de salas aparecem aqui -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
